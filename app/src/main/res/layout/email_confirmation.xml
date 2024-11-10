@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ForgotPasswordEmailActivity">
+
+    <View
+        android:id="@+id/top_background"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="@drawable/up_plash"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/refresh_title"
+        android:layout_width="200dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Восстановление пароля"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@+id/top_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/refresh_info_first"
+        android:layout_width="360dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:text="На указанный email было отправлено письмо с интсрукцией по восстановлению Вашего пароля"
+        app:layout_constraintTop_toBottomOf="@id/refresh_title"
+        android:fontFamily="@font/merriweather_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:id="@+id/refresh_info_second"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/merriweather_light"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:text="Если Вы не видите письмо в почтовом ящике, попробуйте проверить спам-папку. Или воспользуйтесь формой еще раз"
+        app:layout_constraintTop_toBottomOf="@id/refresh_info_first"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        />
+
+
+    <Button
+        android:id="@+id/continue_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:backgroundTint="@color/purple_700"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
+        android:padding="16dp"
+        android:text="Ок"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refresh_info_second" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

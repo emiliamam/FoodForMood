@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".registration">
+    tools:context=".activity.RegistrationActivity">
 
     <!-- Верхний фон -->
     <View
@@ -18,7 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Заголовок "Вход в систему" -->
     <TextView
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
@@ -46,7 +45,7 @@
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/merriweather_light"
         android:layout_marginTop="24dp"/>
-    <!-- Поле ввода Email -->
+
     <EditText
         android:id="@+id/email_input"
         android:layout_width="0dp"
@@ -62,7 +61,6 @@
         android:fontFamily="@font/merriweather_light"
         android:layout_marginTop="16dp"/>
 
-    <!-- Поле ввода Пароль -->
     <EditText
         android:id="@+id/password_input"
         android:layout_width="0dp"
@@ -78,12 +76,11 @@
         android:layout_marginEnd="32dp"
         android:layout_marginTop="16dp"/>
 
-    <!-- Кнопка Войти -->
     <Button
         android:id="@+id/login_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Войти"
+        android:text="Зарегистрироваться"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/purple_700"
         android:padding="16dp"
@@ -94,9 +91,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:fontFamily="@font/source_sans_pro_semi_bold"
-        app:layout_constraintHorizontalBias="0.5"/>
+        />
 
-    <!-- Ссылка "Забыли пароль?" -->
     <TextView
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
@@ -110,8 +106,6 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/merriweather_regular"/>
 
-    <!-- Линия для разделения -->
-
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
@@ -123,7 +117,6 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"/>
 
-    <!-- Ссылка для регистрации -->
     <TextView
         android:id="@+id/no_account"
         android:layout_width="wrap_content"
