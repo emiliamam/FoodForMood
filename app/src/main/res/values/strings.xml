@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FoodMood</string>
+    <string name="title_activity_main_restaurant">MainRestaurantActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

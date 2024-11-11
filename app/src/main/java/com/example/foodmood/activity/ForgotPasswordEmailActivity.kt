@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.foodmood.MainRestaurantActivity
 import com.example.foodmood.R
 
 class ForgotPasswordEmailActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class ForgotPasswordEmailActivity : AppCompatActivity() {
         setContentView(R.layout.email_confirmation)
         continueButton = findViewById(R.id.continue_button)
         continueButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, MainRestaurantActivity::class.java)
             startActivity(intent)
         }
     }
