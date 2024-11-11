@@ -31,9 +31,26 @@ class LoginActivity : AppCompatActivity() {
         forgotPasswordButton = findViewById(R.id.forgot_password)
         registerHere = findViewById(R.id.register_here)
         loginButton.setOnClickListener {
+            var isValid = true
             val email = emailInput.text.toString()
+            if (email.isBlank() || email.isEmpty()) {
+                emailInput.error = "Заполните поле"
+                isValid = false
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                emailInput.error = "Неверный формат email"
+                isValid = false
+            }
             val password = passwordInput.text.toString()
-            loginUser(email, password)
+            if (password.isBlank() || password.isEmpty()) {
+                passwordInput.error = "Заполните поле"
+                isValid = false;
+            } else if (password.length < 6) {
+                passwordInput.error = "Пароль должен быть длиннее 6 символов"
+                isValid = false
+            }
+            if (isValid) {
+                loginUser(email, password)
+            }
         }
         registerHere.setOnClickListener{
             val intent = Intent(this, RegistrationActivity::class.java)
