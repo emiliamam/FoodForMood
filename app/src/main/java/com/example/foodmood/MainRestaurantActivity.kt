@@ -16,8 +16,8 @@ class MainRestaurantActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        binding = ActivityMainRestaurantBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
+        binding = ActivityMainRestaurantBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 //        MapKitFactory.setApiKey("ВАШ_API_КЛЮЧ")
 //        MapKitFactory.initialize(this)
         val navView: BottomNavigationView = binding.navView
