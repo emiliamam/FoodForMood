@@ -21,5 +21,13 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
+        noRegisterButton.setOnClickListener {
+            try {
+                val intentTwo = Intent(this, MainPageActivity::class.java)
+                startActivity(intentTwo)
+            } catch (e: Exception) {
+                e.printStackTrace() // Вывод ошибки в Logcat
+            }
+        }
     }
 }

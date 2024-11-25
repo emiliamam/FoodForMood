@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/filter_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Фильтр"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/kitchen_choose_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Кухня"
+        android:textColor="@color/black"
+        android:fontFamily="@font/merriweather_regular"
+        android:textSize="15sp"
+        />
+
+    <Spinner
+        android:id="@+id/filter_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:gravity="start|top"
+        android:background="@drawable/filter_kitchen_rectangle"
+        android:drawableRight="@drawable/ic_arrow_down" />
+
+    <EditText
+        android:id="@+id/filet_edit_budget"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:hint="Введите желаемый бюджет"
+        android:fontFamily="@font/merriweather_light"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/filter_save_button"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="top|center_horizontal"
+        android:background="@drawable/details_button"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:fontFamily="@font/source_sans_pro_bold"
+        android:text="Сохранить" />
+</LinearLayout>

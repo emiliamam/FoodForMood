@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/settings_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Настройки"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:fontFamily="@font/merriweather_light"
+        />
+    <Button
+        android:id="@+id/settings_change_pass_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/settings_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Изменить пароль"
+        android:gravity="left|center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:backgroundTint="#e6e8f3"
+        android:textAllCaps="false"
+        android:fontFamily="@font/merriweather_light"
+        android:drawableRight="@drawable/ic_arrow_down"
+
+        android:layout_marginTop="40dp"
+        />
+    <Button
+        android:id="@+id/settings_support_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/settings_change_pass_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Написать в поддержку"
+        android:gravity="left|center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:backgroundTint="#e6e8f3"
+        android:textAllCaps="false"
+        android:fontFamily="@font/merriweather_light"
+        android:drawableRight="@drawable/ic_arrow_down"
+        android:layout_marginTop="5dp"
+        />
+    <Button
+        android:id="@+id/settings_user_agree_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/settings_support_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Пользовательское соглашение"
+        android:gravity="left|center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:backgroundTint="#e6e8f3"
+        android:textAllCaps="false"
+        android:fontFamily="@font/merriweather_light"
+        android:drawableRight="@drawable/ic_arrow_down"
+        android:layout_marginTop="5dp"
+        />
+    <Button
+        android:id="@+id/settings_notifications_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/settings_user_agree_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Настройки уведомлений"
+        android:gravity="left|center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:backgroundTint="#e6e8f3"
+        android:textAllCaps="false"
+        android:fontFamily="@font/merriweather_light"
+        android:drawableRight="@drawable/ic_arrow_down"
+        android:layout_marginTop="5dp"
+        />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <fragment
+        android:id="@+id/nav_host_fragment_activity_main_restaurant"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
