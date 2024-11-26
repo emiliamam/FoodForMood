@@ -22,8 +22,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         noRegisterButton.setOnClickListener {
-            val intent = Intent(this, MainRestaurantActivity::class.java)
-            startActivity(intent)
+            try {
+                val intentTwo = Intent(this, MainPageActivity::class.java)
+                startActivity(intentTwo)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 }

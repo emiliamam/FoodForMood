@@ -6,7 +6,6 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="16dp"
     >
 
     <EditText
@@ -20,8 +19,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/ic_search_button"
         android:fontFamily="@font/merriweather_light"
         />
@@ -121,232 +120,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="20dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/italian_kitchen_sample_one"
-                android:layout_width="133dp"
-                android:layout_height="187dp"
-                app:layout_constraintTop_toBottomOf="@id/italian_kitchen_scroll"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/ic_card_frame">
-
-                <ImageView
-                    android:id="@+id/card_one_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@id/italian_kitchen_sample_one"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_one"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_one"
-                    android:background="@drawable/card_ample_palces"
-                    android:layout_marginTop="5dp">
-                </ImageView>
-
-                <TextView
-                    android:id="@+id/place_name_sample_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/card_one_image"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_one"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_one"
-                    android:text="Sample place"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/merriweather_regular"
-                    android:textSize="15sp"
-                    android:paddingBottom="5dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginHorizontal="20dp"
-                    >
-                </TextView>
-                <TextView
-                    android:id="@+id/place_description_sample_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/place_name_sample_one"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_one"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_one"
-                    android:text="Aboba aboba"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/merriweather_light"
-                    android:textSize="12sp"
-                    android:paddingHorizontal="5dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginHorizontal="20dp"
-                    >
-                </TextView>
-                <Button
-                    android:id="@+id/detail_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/place_description_sample_one"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_one"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_one"
-                    app:layout_constraintBottom_toBottomOf="@id/italian_kitchen_sample_one"
-                    android:text="Подробнее"
-                    android:gravity="top|center_horizontal"                    android:textColor="@color/white"
-                    android:fontFamily="@font/source_sans_pro_bold"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="20dp"
-                    android:textSize="9sp"
-                    android:textAllCaps="false"
-                    android:background="@drawable/details_button"
-                    >
-                </Button>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/italian_kitchen_sample_two"
-                android:layout_width="133dp"
-                android:layout_height="187dp"
-                app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_one"
-                android:layout_marginLeft="16dp"
-                android:background="@drawable/ic_card_frame">
-
-                <ImageView
-                    android:id="@+id/card_two_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@id/italian_kitchen_sample_two"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_two"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_two"
-                    android:background="@drawable/card_ample_palces"
-                    android:layout_marginTop="5dp">
-                </ImageView>
-
-                <TextView
-                    android:id="@+id/place_name_sample_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/card_two_image"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_two"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_two"
-                    android:text="Sample place"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/merriweather_regular"
-                    android:textSize="15sp"
-                    android:paddingBottom="5dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginHorizontal="20dp"
-                    >
-                </TextView>
-                <TextView
-                    android:id="@+id/place_description_sample_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/place_name_sample_two"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_two"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_two"
-                    android:text="Aboba aboba"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/merriweather_light"
-                    android:textSize="12sp"
-                    android:paddingBottom="5dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginHorizontal="20dp"
-                    >
-                </TextView>
-                <Button
-                    android:id="@+id/detail_button_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/place_description_sample_two"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_two"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_two"
-                    app:layout_constraintBottom_toBottomOf="@id/italian_kitchen_sample_two"
-                    android:text="Подробнее"
-                    android:gravity="top|center_horizontal"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/source_sans_pro_bold"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="20dp"
-                    android:textSize="9sp"
-                    android:textAllCaps="false"
-                    android:background="@drawable/details_button"
-                    >
-                </Button>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/italian_kitchen_sample_three"
-                android:layout_width="133dp"
-                android:layout_height="187dp"
-                app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_one"
-                android:layout_marginLeft="16dp"
-                android:background="@drawable/ic_card_frame">
-
-                <ImageView
-                    android:id="@+id/card_three_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@id/italian_kitchen_sample_three"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_three"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_three"
-                    android:background="@drawable/card_ample_palces"
-                    android:layout_marginTop="5dp">
-                </ImageView>
-
-                <TextView
-                    android:id="@+id/place_name_sample_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/card_three_image"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_three"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_three"
-                    android:text="Sample place"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/merriweather_regular"
-                    android:textSize="15sp"
-                    android:paddingBottom="5dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginHorizontal="20dp"
-                    >
-                </TextView>
-                <TextView
-                    android:id="@+id/place_description_sample_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/place_name_sample_three"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_three"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_three"
-                    android:text="Aboba aboba"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/merriweather_light"
-                    android:textSize="12sp"
-                    android:paddingBottom="5dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginHorizontal="20dp"
-                    >
-                </TextView>
-                <Button
-                    android:id="@+id/detail_button_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/place_description_sample_three"
-                    app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_three"
-                    app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_three"
-                    app:layout_constraintBottom_toBottomOf="@id/italian_kitchen_sample_three"
-                    android:text="Подробнее"
-
-                    android:gravity="top|center_horizontal"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/source_sans_pro_bold"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="20dp"
-                    android:textSize="9sp"
-                    android:textAllCaps="false"
-                    android:background="@drawable/details_button"
-                    >
-                </Button>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </HorizontalScrollView>
     <TextView

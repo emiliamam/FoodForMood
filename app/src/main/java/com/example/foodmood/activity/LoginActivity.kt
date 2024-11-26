@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.foodmood.MainRestaurantActivity
 import com.example.foodmood.R
 import com.example.foodmood.data.LoginRequest
 import com.example.foodmood.data.LoginResponse
@@ -62,12 +63,18 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun loginUser(username: String, password: String) {
-        val request = LoginRequest(username = username, password = password)
-        RetrofitClient.instance.loginUser(request).enqueue(object : Callback<LoginResponse> {
+    private fun loginUser(email: String, password: String) {
+        RetrofitClient.instance.loginUser(email, password).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
+                    val intent = Intent(this@LoginActivity, MainRestaurantActivity::class.java)
+                    startActivity(intent)
                     Toast.makeText(this@LoginActivity, "Авторизация успешна", Toast.LENGTH_LONG).show()
+                    val token = response.body()?.access_token
+                    token?.let {
+                        saveAccessToken(it) // Сохраняем токен
+                    }
+
                 } else {
                     Toast.makeText(this@LoginActivity, "Ошибка авторизации: ${response.errorBody()?.string()}", Toast.LENGTH_LONG).show()
                 }
@@ -78,5 +85,14 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
+
+    fun saveAccessToken(token: String) {
+        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("access_token", token) // Сохраняем токен
+        editor.apply()
+    }
+
+
 }
 

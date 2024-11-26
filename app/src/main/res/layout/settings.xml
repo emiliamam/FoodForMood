@@ -10,6 +10,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="Настройки"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         android:textColor="@color/black"
         android:textSize="30sp"
@@ -80,4 +81,6 @@
         android:drawableRight="@drawable/ic_arrow_down"
         android:layout_marginTop="5dp"
         />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,4 +26,11 @@ object RetrofitClient {
 
         retrofit.create(AuthService::class.java)
     }
+    val api: AuthService.ApiService by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(AuthService.ApiService::class.java)
+    }
 }
