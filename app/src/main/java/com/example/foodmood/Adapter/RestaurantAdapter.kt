@@ -24,7 +24,7 @@ class RestaurantAdapter(private val restaurantList: List<Restaurant>) :
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
         val restaurant = restaurantList[position]
         holder.name.text = restaurant.name
-        holder.description.text = "Кухня: ${restaurant.kitchen}, Средний чек: ${restaurant.average_check}"
+        holder.description.text = "Средний чек: ${restaurant.average_check}"
     }
 
     override fun getItemCount() = restaurantList.size

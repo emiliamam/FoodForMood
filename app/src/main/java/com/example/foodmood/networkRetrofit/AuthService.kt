@@ -4,6 +4,7 @@ import com.example.foodmood.data.LoginRequest
 import com.example.foodmood.data.LoginResponse
 import com.example.foodmood.data.RegisterRequest
 import com.example.foodmood.data.RegisterResponse
+import com.example.foodmood.data.SendCodeResponse
 import com.example.foodmood.model.Restaurant
 import retrofit2.Call
 import retrofit2.http.Body
@@ -22,6 +23,10 @@ interface AuthService {
          @Query("email") email: String,
          @Query("password") password: String
      ): Call<LoginResponse>
+    @POST("/auth/send_code")
+    fun sendСode(
+        @Query("email") email: String,
+    ): Call<SendCodeResponse>
     interface ApiService {
         @GET("restaurant")
         suspend fun getRestaurants(
