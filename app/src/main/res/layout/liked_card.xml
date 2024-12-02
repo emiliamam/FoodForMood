@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/card_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_ample_palces"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        ></ImageView>
+    <TextView
+        android:id="@+id/restaraunt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/card_image"
+        app:layout_constraintBaseline_toTopOf="parent"
+        android:layout_marginLeft="17dp"
+        android:text="Ресторан абоба"
+        android:fontFamily="@font/merriweather_regular"
+        android:textColor="@color/black"
+        ></TextView>
+    <TextView
+        android:id="@+id/restaraunt_kitchen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/card_image"
+        app:layout_constraintTop_toBottomOf="@id/restaraunt_name"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="17dp"
+        android:textSize="9sp"
+        android:text="Кухня абоба"
+        android:fontFamily="@font/merriweather_regular"
+        android:textColor="@color/black"
+        ></TextView>
+    <TextView
+        android:id="@+id/avg_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/card_image"
+        app:layout_constraintTop_toBottomOf="@id/restaraunt_kitchen"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="2dp"
+        android:textSize="9sp"
+        android:text="Cр. чек"
+        android:fontFamily="@font/merriweather_regular"
+        android:textColor="@color/black"
+        ></TextView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/details_button"
+        android:text="Подробнее"
+        android:textAllCaps="false"
+        android:gravity="top|center_horizontal"
+        android:textColor="@color/white"
+        android:paddingTop="2dp"
+        android:textSize="9sp"
+        app:layout_constraintTop_toBottomOf="@id/avg_check"
+        app:layout_constraintLeft_toRightOf="@+id/card_image"
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="17dp"
+        ></Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
