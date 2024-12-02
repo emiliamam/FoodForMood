@@ -1,4 +1,4 @@
-package com.example.app
+package com.example.foodmood.ui.notifications
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -16,7 +16,7 @@ class NotificationsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Инфлейт макета с использованием View Binding
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         return binding.root

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/italian_kitchen_sample_two"
-    android:layout_width="133dp"
+    android:layout_width="160dp"
     android:layout_height="150dp"
     android:layout_marginLeft="16dp"
     android:background="@drawable/ic_card_frame"
@@ -42,14 +42,20 @@
         android:layout_marginHorizontal="20dp"
         >
     </TextView>
-    <Button
-        android:id="@+id/detail_button_two"
+    <LinearLayout
+        android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/place_description_sample_two"
         app:layout_constraintLeft_toLeftOf="@id/italian_kitchen_sample_two"
-        app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_two"
+        app:layout_constraintRight_toRightOf="@id/italian_kitchen_sample_two">
+    <Button
+        android:id="@+id/detail_button_two"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:text="Подробнее"
+
         android:gravity="top|center_horizontal"
         android:textColor="@color/white"
         android:fontFamily="@font/source_sans_pro_bold"
@@ -57,6 +63,19 @@
         android:textAllCaps="false"
         android:layout_marginTop="10dp"
         android:background="@drawable/details_button"
-        >
-    </Button>
+        />
+        <ImageButton
+            android:id="@+id/favorite"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:gravity="top|center_horizontal"
+            android:textColor="@color/white"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:textSize="9sp"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/baseline_favorite_border_24"
+            />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
