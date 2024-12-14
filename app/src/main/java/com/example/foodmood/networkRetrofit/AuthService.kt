@@ -33,7 +33,18 @@ interface AuthService {
             @Query("page") page: Int,
             @Query("page_size") pageSize: Int
         ): RestaurantResponse
+
+        @GET("/filter_restaurant")
+        suspend fun filterRestaurants(
+            @Query("page") page: Int = 1,
+            @Query("page_size") pageSize: Int = 20,
+            @Query("average_check") averageCheck: String? = null,
+            @Query("kitchen") kitchen: String? = null,
+            @Query("estimation") estimation: String? = null
+        ): RestaurantResponse
     }
+
+
 
 }
 

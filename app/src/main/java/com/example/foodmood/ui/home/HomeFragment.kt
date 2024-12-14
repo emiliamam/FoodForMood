@@ -13,6 +13,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodmood.R
@@ -30,77 +31,94 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private var selectedCuisine: String = "Все кухни" // Заголовок по умолчанию
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+
+        // Изначальный заголовок
+        binding.italianKitchenTopic.text = selectedCuisine
 
         setupRecyclerView()
-//        val filterButton: Button = binding.filter_button
 
-        // Слушатель для кнопки фильтра
-//        filterButton.setOnClickListener {
-//            showFilterDialog()
-//        }
-        return root
+        // Привязка к кнопке фильтра
+        binding.filterButton.setOnClickListener {
+            showFilterDialog()
+        }
+
+        return binding.root
     }
 
     private fun setupRecyclerView() {
-
-        val recyclerView: RecyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val recyclerView = binding.recyclerView
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // Сетка из двух колонок
 
         lifecycleScope.launch {
             try {
-                val response = RetrofitClient.api.getRestaurants(page = 1, pageSize = 20)
-                val restaurantList = response.data
-                val adapter = RestaurantAdapter(restaurantList)
-                recyclerView.adapter = adapter
+                // Изначально выводим все рестораны
+                val response = RetrofitClient.api.filterRestaurants(page = 1, pageSize = 20)
+                updateRecyclerView(response.data)
             } catch (e: Exception) {
                 e.printStackTrace()
-                // Обработка ошибок
+                Toast.makeText(requireContext(), "Ошибка загрузки ресторанов", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun showFilterDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.filter_dialog)
+
+        val spinnerCuisine: Spinner = dialog.findViewById(R.id.filter_spinner)
+        val editBudget: EditText = dialog.findViewById(R.id.filet_edit_budget)
+        val btnSave: Button = dialog.findViewById(R.id.filter_save_button)
+
+        val adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.cuisine_array,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerCuisine.adapter = adapter
+
+        btnSave.setOnClickListener {
+            val selectedCuisineText = spinnerCuisine.selectedItem.toString()
+            val budget = editBudget.text.toString()
+
+            lifecycleScope.launch {
+                try {
+                    // Запрос к бэкенду для фильтрации
+                    val response = RetrofitClient.api.filterRestaurants(
+                        page = 1,
+                        pageSize = 20,
+                        averageCheck = if (budget.isNotEmpty()) budget else null,
+                        kitchen = if (selectedCuisineText.isNotEmpty() && selectedCuisineText != "Все кухни") selectedCuisineText else null
+                    )
+
+                    // Обновление заголовка и RecyclerView
+                    selectedCuisine = if (selectedCuisineText.isNotEmpty()) selectedCuisineText else "Все кухни"
+                    binding.italianKitchenTopic.text = selectedCuisine
+
+                    updateRecyclerView(response.data)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(requireContext(), "Ошибка фильтрации", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
-//    private fun showFilterDialog() {
-//        // Создание и настройка диалога
-//        val dialog = Dialog(this)
-//        dialog.setContentView(R.layout.filter_dialog)
-//
-//        // Найти элементы интерфейса в диалоге
-//        val spinnerCuisine: Spinner = dialog.findViewById(R.id.filter_spinner)
-//        val editBudget: EditText = dialog.findViewById(R.id.filet_edit_budget)
-//        val btnSave: Button = dialog.findViewById(R.id.filter_save_button)
-//
-//        // Настройка Spinner с адаптером
-//        val adapter = ArrayAdapter.createFromResource(
-//            this,
-//            R.array.cuisine_array, // ID массива строк
-//            android.R.layout.simple_spinner_item // Макет для каждого элемента списка
-//        )
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//        spinnerCuisine.adapter = adapter
-//
-//        // Слушатель кнопки "Сохранить"
-//        btnSave.setOnClickListener {
-//            val selectedCuisine = spinnerCuisine.selectedItem.toString() // Получить выбранный элемент
-//            val budget = editBudget.text.toString() // Получить введенный бюджет
-//
-//            // Здесь можно обработать данные, например, передать их в Activity/Fragment
-//            Toast.makeText(this, "Кухня: $selectedCuisine, Бюджет: $budget", Toast.LENGTH_SHORT).show()
-//
-//            dialog.dismiss() // Закрыть диалог
-//        }
-//
-//        // Показать диалог
-//        dialog.show()
-//    }
+
+    private fun updateRecyclerView(filteredRestaurants: List<Restaurant>) {
+        val adapter = RestaurantAdapter(filteredRestaurants)
+        binding.recyclerView.adapter = adapter
+    }
+
 }
