@@ -50,6 +50,18 @@ class HomeFragment : Fragment() {
             showFilterDialog()
         }
 
+        binding.functionalButton.setOnClickListener {
+            showFunctionalInfo()
+        }
+
+        binding.questionsButton.setOnClickListener {
+            showFAQ()
+        }
+
+        binding.otherButton.setOnClickListener {
+            showOtherInfo()
+        }
+
         return binding.root
     }
 
@@ -67,6 +79,30 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(), "Ошибка загрузки ресторанов", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun showFunctionalInfo() {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.dialog_functional)
+
+        dialog.setCancelable(true)
+        dialog.show()
+    }
+
+    private fun showFAQ() {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.dialog_faq)
+
+        dialog.setCancelable(true)
+        dialog.show()
+    }
+
+    private fun showOtherInfo() {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.dialog_other)
+
+        dialog.setCancelable(true)
+        dialog.show()
     }
 
     private fun showFilterDialog() {
