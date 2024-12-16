@@ -34,10 +34,7 @@ class MainRestaurantActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-//        // Слушатель для кнопки фильтра
-//        binding.filterButton.setOnClickListener {
-//            showFilterDialog()
-//        }
+
     }
 
     private fun showFilterDialog() {
