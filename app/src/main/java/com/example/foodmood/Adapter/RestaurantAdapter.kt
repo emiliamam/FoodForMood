@@ -10,10 +10,15 @@ import com.example.foodmood.model.Restaurant
 import android.content.Intent
 import android.content.Context
 import com.example.foodmood.activity.RestaurantDetailActivity
+import FavoriteManager
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 
-class RestaurantAdapter(private val restaurantList: List<Restaurant>) :
-    RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
+class RestaurantAdapter(
+    private val restaurantList: List<Restaurant>,
+    private val context: Context
+) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
 
     class RestaurantViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.place_name_sample_two)
@@ -29,43 +34,60 @@ class RestaurantAdapter(private val restaurantList: List<Restaurant>) :
 
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
         val restaurant = restaurantList[position]
-        val context = holder.itemView.context
-
         holder.name.text = restaurant.name
         holder.description.text = "Средний чек: ${restaurant.average_check}"
 
-        val isFavorite = restaurant.isFavorite
+        val favorites = FavoriteManager.getFavorites(context)
+        val isFavorite = favorites.any { it.name == restaurant.name }
+
         updateFavoriteIcon(holder.favorite, isFavorite)
 
         holder.favorite.setOnClickListener {
-            restaurant.isFavorite = !restaurant.isFavorite
-
-            updateFavoriteIcon(holder.favorite, restaurant.isFavorite)
-
-//            updateFavoriteInBackend(restaurant.id, restaurant.isFavorite)
-
+            val currentFavorites = FavoriteManager.getFavorites(context).toMutableList()
+            if (isFavorite) {
+                // Удаление из избранного
+                currentFavorites.removeAll { it.name == restaurant.name }
+            } else {
+                // Добавление в избранное
+                currentFavorites.add(restaurant)
+            }
+            FavoriteManager.saveFavorites(context, currentFavorites)
             notifyItemChanged(position)
-        }
-        holder.itemView.setOnClickListener {
-            // Переход на новый экран с подробной информацией
-            val intent = Intent(context, RestaurantDetailActivity::class.java)
-            // Передаем данные о ресторане через Intent
-            intent.putExtra("RESTAURANT_NAME", restaurant.name)
-            intent.putExtra("RESTAURANT_DESCRIPTION", restaurant.description)
-            intent.putExtra("RESTAURANT_KITCHEN", restaurant.kitchen)
-            intent.putExtra("RESTAURANT_ESTIMATION", restaurant.estimation)
-            intent.putExtra("RESTAURANT_TYPE", restaurant.type)
-            context.startActivity(intent)
         }
     }
 
     private fun updateFavoriteIcon(favoriteButton: ImageButton, isFavorite: Boolean) {
         if (isFavorite) {
-            favoriteButton.setImageResource(R.drawable.baseline_favorite_24)
+            favoriteButton.setBackgroundResource(R.drawable.baseline_favorite_24)
         } else {
-            favoriteButton.setImageResource(R.drawable.baseline_favorite_border_24)
+            favoriteButton.setBackgroundResource(R.drawable.baseline_favorite_border_24)
         }
     }
 
     override fun getItemCount() = restaurantList.size
+}
+
+object FavoriteManager {
+
+    private const val PREF_NAME = "favorites_pref"
+    private const val FAVORITES_KEY = "favorites_key"
+
+    fun saveFavorites(context: Context, favorites: List<Restaurant>) {
+        val sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val json = Gson().toJson(favorites)
+        editor.putString(FAVORITES_KEY, json)
+        editor.apply()
+    }
+
+    fun getFavorites(context: Context): List<Restaurant> {
+        val sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val json = sharedPreferences.getString(FAVORITES_KEY, null)
+        return if (json != null) {
+            val type = object : TypeToken<List<Restaurant>>() {}.type
+            Gson().fromJson(json, type)
+        } else {
+            emptyList()
+        }
+    }
 }

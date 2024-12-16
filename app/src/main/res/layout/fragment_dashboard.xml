@@ -2,9 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/italian_kitchen_topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Понравившиеся рестораны"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/merriweather_light"
+        android:textSize="24dp"
+        android:textColor="@color/black">
+    </TextView>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_view_favorites"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"/>
+
 
 </RelativeLayout>

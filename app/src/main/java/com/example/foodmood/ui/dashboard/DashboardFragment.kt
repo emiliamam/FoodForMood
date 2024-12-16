@@ -8,13 +8,15 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.foodmood.databinding.FragmentDashboardBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.foodmood.R
+import com.example.foodmood.model.Restaurant
+import RestaurantAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,14 +24,18 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
+        setupRecyclerView()
 
-        return root
+        return binding.root
+    }
+
+    private fun setupRecyclerView() {
+        val favorites = FavoriteManager.getFavorites(requireContext())
+        val recyclerView = binding.recyclerViewFavorites
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerView.adapter = RestaurantAdapter(favorites, requireContext())
     }
 
     override fun onDestroyView() {

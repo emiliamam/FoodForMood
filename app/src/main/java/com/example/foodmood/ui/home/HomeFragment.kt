@@ -117,7 +117,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun updateRecyclerView(filteredRestaurants: List<Restaurant>) {
-        val adapter = RestaurantAdapter(filteredRestaurants)
+        val adapter = RestaurantAdapter(filteredRestaurants, requireContext())
         binding.recyclerView.adapter = adapter
     }
 

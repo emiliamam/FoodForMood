@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.foodmood.R
 import com.example.foodmood.databinding.ActivityMainRestaurantBinding
+//import com.example.foodmood.databinding.ActivityMainRestaurantBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainRestaurantActivity : AppCompatActivity() {
@@ -33,10 +34,10 @@ class MainRestaurantActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // Слушатель для кнопки фильтра
-        binding.filterButton.setOnClickListener {
-            showFilterDialog()
-        }
+//        // Слушатель для кнопки фильтра
+//        binding.filterButton.setOnClickListener {
+//            showFilterDialog()
+//        }
     }
 
     private fun showFilterDialog() {
